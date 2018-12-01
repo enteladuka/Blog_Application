@@ -6,7 +6,9 @@ root 'posts#index', as: 'home' #posts controller / index action
 
 get 'about' => 'pages#about'#pages controller / about action
 
+resources :users
 resources :posts do#defines all of the routs for controller posts
   resources :comments
+
 end
 end

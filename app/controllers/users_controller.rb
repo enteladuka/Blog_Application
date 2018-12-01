@@ -14,7 +14,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:notice] = "Thank you for signing up!"
+      flash[:notice] = "Thank you for signing up!" #WHY NOT WORKING
+      #log_in @user this logs user in upon signup
+      redirect_to login_path #directs user to log in
     else
       render "new"
     end

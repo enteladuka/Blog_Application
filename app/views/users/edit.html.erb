@@ -1,37 +1,64 @@
-<h3> Edit Profile </h3>
-<%= form_for @user do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <div class="alert alert-danger">
-        The form contains <%= pluralize(@user.errors.count, "error") %>.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+
+  </style>
+</head>
+
+<div class="container-fluid">
+  <div class="col-sm-9">
+    <h3> Edit Profile </h3>
+    <hr>
+    <%= form_for @user do |f| %>
+      <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <div class="alert alert-danger">
+            The form contains <%= pluralize(@user.errors.count, "error") %>.
+          </div>
+          <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="field">
+        <%= f.label :name %><br/>
+        <%= f.text_field(:name, {:class => 'form-control'}) %>
       </div>
-      <ul>
-        <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-    <% end %>
-    <div class="field">
-      <%= f.label :name %><br/>
-      <%= f.text_field(:name, {:class => 'form-control'}) %>
-    </div>
-    <div class="field">
-      <%= f.label :email %><br/>
-      <%= f.email_field(:email, {:class => 'form-control'}) %>
-    </div>
-    <div class="field">
-      <%= f.label :password %><br/>
-      <%= f.password_field(:password, {:class => 'form-control'}) %>
-    </div>
-    <div class="field">
-      <%= f.label :password_confirmation %><br/>
-      <%= f.password_field(:password_confirmation, {:class => 'form-control'}) %>
-    </div><br>
-    <div class="actions"><%= f.submit "Save Changes", {:class => 'btn btn-primary'} %>
+      <div class="field">
+        <%= f.label :email %><br/>
+        <%= f.email_field(:email, {:class => 'form-control'}) %>
+      </div>
+      <div class="field">
+        <%= f.label :password %><br/>
+        <%= f.password_field(:password, {:class => 'form-control'}) %>
+      </div>
+      <div class="field">
+        <%= f.label :password_confirmation %><br/>
+        <%= f.password_field(:password_confirmation, {:class => 'form-control'}) %>
+      </div><br>
+      <div class="actions"><%= f.submit "Save Changes", {:class => 'btn btn-primary'} %>
                          <%= link_to "Delete Account", user_path(@user),
                                                       method: :delete,
                                                       data: {confirm: 'Are you sure?'},
                                                       :class => 'btn btn-danger' %>
-</div>
+      </div>
+      <br>
+      <hr>
 <% end %>
+  </div>
+</div>

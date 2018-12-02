@@ -1,22 +1,47 @@
-<h1> Add post </h1>
-<%= form_for :post, url: posts_path do |f| %>
-  <% if @post.errors.any? %>
-    <% @post.errors.full_messages.each do |msg| %>
-      <div class="alert alert-danger"><%= msg %></div>
-    <% end %>
-  <% end %>
-<!-- url:posts_path submits to our create method -->
-  <p>
-    <%= f.label :title %><br>
-    <%= f.text_field(:title, {:class => 'form-control'}) %>
-  </p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
 
-  <p>
-    <%= f.label :body %><br>
-    <%= f.text_field(:body, {:class => 'form-control'}) %>
-  </p>
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
 
-  <p>
-    <%= f.submit({:class => 'btn btn-primary'}) %>
-  </p>
+  </style>
+</head>
+<div class="container-fluid">
+  <div class="col-sm-9">
+
+    <h3> New Post </h3>
+    <hr>
+      <%= form_for :post, url: posts_path do |f| %>
+        <% if @post.errors.any? %>
+          <% @post.errors.full_messages.each do |msg| %>
+          <div class="alert alert-danger"><%= msg %></div>
+          <% end %>
+      <% end %>
+      <p>
+        <%= f.label :title %><br>
+        <%= f.text_field(:title, {:class => 'form-control'}) %>
+      </p>
+
+      <p>
+        <%= f.label :body %><br>
+        <%= f.text_field(:body, {:class => 'form-control'}) %>
+      </p>
+
+      <p>
+        <%= f.submit({:class => 'btn btn-primary'}) %>
+      </p>
+      <hr>
   <% end %>
+</div>
+</div>

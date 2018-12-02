@@ -1,8 +1,33 @@
-<h1>Blog Posts</h1>
-<div class="well well-sm">
-<% @posts.each do |post| %>
-    <h3><%= post.title %></h3>
-    <p><%= post.body %></p>
-    <%= link_to "Read More", post_path(post), :class => 'btn btn-light' %>
-<% end %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+
+  </style>
+</head>
+<div class="container-fluid">
+  <div class="col-sm-9">
+    <h4><small>RECENT POSTS</small></h4>
+    <hr>
+    <% @posts.each do |post| %>
+        <h3><%= post.title %></h3>
+        <h5><span class="glyphicon glyphicon-time"></span> Post by NAME, DATE</h5>
+        <!-- I NEED HELP HERE -->
+        <p><%= post.body %></p>
+        <%= link_to "Read More", post_path(post), :class => 'btn btn-light' %>
+        <hr>
+    <% end %>
+    <br><br>
 </div>

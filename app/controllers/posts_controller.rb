@@ -9,8 +9,9 @@ class PostsController < ApplicationController
 
   def create
     #render plain: params[:post].inspect
-    @post = Post.new(post_params) #post represents the model
+    @post = current_user.posts.build(post_params) #post represents the model
     if @post.save
+      flash[:success] = "Post created!"
       redirect_to @post
     else
       render 'new'
@@ -31,6 +32,7 @@ class PostsController < ApplicationController
   end
   def show
     @post = Post.find(params[:id])
+    @comments = Comment.where(post_id: @post).order("created_at DESC")
   end
 
   def destroy

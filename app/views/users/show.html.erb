@@ -3,7 +3,17 @@
 </br>
 </br>
 </br>
-<%= link_to "Delete Account", user_path(@user),
-                      method: :delete,
-                      data: {confirm: 'Are you sure?'},
-                      :class => 'btn btn-danger' %>
+
+<div class="col-md-8">
+  <% if @user.posts.any? %>
+    <h3>My Posts(<%= @user.posts.count %>)</h3>
+    <ol class="posts">
+      <!-- SOMETHING THAT DISPLAYS THE USERS POSTS -->
+    </ol>
+  <% end %>
+</div>
+
+
+
+</br>
+</br>

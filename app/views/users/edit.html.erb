@@ -28,5 +28,10 @@
       <%= f.label :password_confirmation %><br/>
       <%= f.password_field(:password_confirmation, {:class => 'form-control'}) %>
     </div><br>
-    <div class="actions"><%= f.submit "Save Changes", {:class => 'btn btn-primary'} %></div>
+    <div class="actions"><%= f.submit "Save Changes", {:class => 'btn btn-primary'} %>
+                         <%= link_to "Delete Account", user_path(@user),
+                                                      method: :delete,
+                                                      data: {confirm: 'Are you sure?'},
+                                                      :class => 'btn btn-danger' %>
+</div>
 <% end %>

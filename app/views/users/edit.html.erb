@@ -1,0 +1,32 @@
+<h3> Edit Profile </h3>
+<%= form_for @user do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <div class="alert alert-danger">
+        The form contains <%= pluralize(@user.errors.count, "error") %>.
+      </div>
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+    <div class="field">
+      <%= f.label :name %><br/>
+      <%= f.text_field(:name, {:class => 'form-control'}) %>
+    </div>
+    <div class="field">
+      <%= f.label :email %><br/>
+      <%= f.email_field(:email, {:class => 'form-control'}) %>
+    </div>
+    <div class="field">
+      <%= f.label :password %><br/>
+      <%= f.password_field(:password, {:class => 'form-control'}) %>
+    </div>
+    <div class="field">
+      <%= f.label :password_confirmation %><br/>
+      <%= f.password_field(:password_confirmation, {:class => 'form-control'}) %>
+    </div><br>
+    <div class="actions"><%= f.submit "Save Changes", {:class => 'btn btn-primary'} %></div>
+<% end %>

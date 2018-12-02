@@ -1,1 +1,9 @@
+<h4> My profile </h4>
 <%= @user.name %>, <%= @user.email %>
+</br>
+</br>
+</br>
+<%= link_to "Delete Account", user_path(@user),
+                      method: :delete,
+                      data: {confirm: 'Are you sure?'},
+                      :class => 'btn btn-danger' %>

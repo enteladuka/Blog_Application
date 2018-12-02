@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:notice] = "Thank you for signing up!" #WHY NOT WORKING
+      #FLASH NOTICE THANKS FOR SIGNING UP #WHY NOT WORKING
       #log_in @user this logs user in upon signup
       redirect_to login_path #directs user to log in
     else
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
-      flash[:success] = "Profile updated"
+      #FLASH NOTICE SUCCESSFUL PROFILE UPDATE
       redirect_to @user
     else
       render 'edit'
@@ -37,12 +37,12 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id]) 
+    @user = User.find(params[:id])
   end
 
   def destroy
     User.find(params[:id]).destroy
-    flash[:success] = "User deleted"
+    #SUCCESS NOTICE ACCOUNT SUCCESSFULLY DELETED
     redirect_to posts_path
   end
 

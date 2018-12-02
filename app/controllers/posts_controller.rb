@@ -9,9 +9,9 @@ class PostsController < ApplicationController
 
   def create
     #render plain: params[:post].inspect
-    @post = current_user.posts.build(post_params) #post represents the model
+    @post = current_user.posts.build(post_params)
     if @post.save
-      flash[:success] = "Post created!"
+      flash[:notice] = "Post successfully created"
       redirect_to @post
     else
       render 'new'

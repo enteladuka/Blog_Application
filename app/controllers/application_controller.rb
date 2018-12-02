@@ -4,13 +4,14 @@ class ApplicationController < ActionController::Base
 
 
 ####Can remove this, just requires user to be logged in ####
+###DONT GET THIS ###
   private
 
   # Confirms a logged-in user.
   def logged_in_user
     unless logged_in?
       store_location
-      flash[:danger] = "Please log in."
+      #INCLUDE A FLASH NOTICE SAYING USER NEEDS TO LOG IN
       redirect_to login_url
     end
   end

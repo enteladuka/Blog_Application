@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :post_owner, only: [:destroy, :edit, :update]
+  
   def index
     @posts = Post.all
   end
@@ -41,8 +43,16 @@ class PostsController < ApplicationController
     redirect_to posts_path
   end
 
-  private def post_params
-    params.require(:post).permit(:title, :body)
-  end
+  private
 
+    def post_params
+      params.require(:post).permit(:title, :body)
+    end
+
+    def post_owner
+      unless current_user.id == @post.user_id
+        #INCLUDE A FLASH NOTICE THAT SAYS RESTRICTED ACCESS
+        redirect_to @post
+      end
+    end
 end

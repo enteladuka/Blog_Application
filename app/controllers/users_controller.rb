@@ -23,11 +23,11 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = current_user
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = current_user
     if @user.update_attributes(user_params)
       #FLASH NOTICE SUCCESSFUL PROFILE UPDATE
       redirect_to @user
@@ -37,11 +37,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = current_user
   end
 
   def destroy
-    User.find(params[:id]).destroy
+    current_user.destroy
     #SUCCESS NOTICE ACCOUNT SUCCESSFULLY DELETED
     redirect_to posts_path
   end

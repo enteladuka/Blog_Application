@@ -24,8 +24,10 @@
     <% @posts.each do |post| %>
         <div class="well well-sm"
         <h3><small><%= post.title.upcase %></small></h3>
-        <h5><span class="glyphicon glyphicon-time"></span> Post by NAME, DATE</h5>
-        <!-- I NEED HELP HERE -->
+        <h5><span class="glyphicon glyphicon-time"></span>
+        <%= post.user.name %>
+        <%=  post.created_at.to_s(:short) %>
+        </h5>
         <p><%= post.body %></p>
         <%= link_to "Read More", post_path(post), :class => 'btn btn-info btn-sm' %>
       </div>

@@ -20,7 +20,7 @@
 
 <div class="container-fluid">
   <div class="col-sm-9">
-    <h3> Edit Post </h3>
+    <h3> Edit Post <span class="glyphicon glyphicon-pencil"></span></h3>
       <%= form_for :post, url: post_path(@post), method: :patch do |f| %>
         <% if @post.errors.any? %>
           <% @post.errors.full_messages.each do |msg| %>

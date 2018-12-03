@@ -20,7 +20,7 @@
 
 <div class="container-fluid">
   <div class="col-sm-9">
-    <h3> Edit Profile </h3>
+    <h3> Edit Profile <span class="glyphicon glyphicon-pencil"></span></h3>
     <hr>
     <%= form_for @user do |f| %>
       <% if @user.errors.any? %>
@@ -37,19 +37,19 @@
       <% end %>
       <div class="field">
         <%= f.label :name %><br/>
-        <%= f.text_field(:name, {:class => 'form-control'}) %>
+        <%= f.text_field(:name, {:class => 'form-control', :placeholder => 'Enter name'}) %>
       </div>
       <div class="field">
         <%= f.label :email %><br/>
-        <%= f.email_field(:email, {:class => 'form-control'}) %>
+        <%= f.email_field(:email, {:class => 'form-control', :placeholder => 'Enter email'}) %>
       </div>
       <div class="field">
         <%= f.label :password %><br/>
-        <%= f.password_field(:password, {:class => 'form-control'}) %>
+        <%= f.password_field(:password, {:class => 'form-control', :placeholder => 'Enter password'}) %>
       </div>
       <div class="field">
         <%= f.label :password_confirmation %><br/>
-        <%= f.password_field(:password_confirmation, {:class => 'form-control'}) %>
+        <%= f.password_field(:password_confirmation, {:class => 'form-control', :placeholder => 'Enter password confirmation'}) %>
       </div><br>
       <div class="actions"><%= f.submit "Save Changes", {:class => 'btn btn-primary'} %>
                          <%= link_to "Delete Account", user_path(@user),

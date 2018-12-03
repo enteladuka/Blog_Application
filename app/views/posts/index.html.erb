@@ -22,12 +22,15 @@
     <h4><small>RECENT POSTS</small></h4>
     <hr>
     <% @posts.each do |post| %>
+        <div class="well well-sm"
         <h3><small><%= post.title.upcase %></small></h3>
         <h5><span class="glyphicon glyphicon-time"></span> Post by NAME, DATE</h5>
         <!-- I NEED HELP HERE -->
         <p><%= post.body %></p>
         <%= link_to "Read More", post_path(post), :class => 'btn btn-info btn-sm' %>
+      </div>
         <hr>
+
     <% end %>
     <br><br>
 </div>

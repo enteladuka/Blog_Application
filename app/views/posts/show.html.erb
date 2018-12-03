@@ -52,9 +52,9 @@
 
 <% @comments.each do |comment| %>
 <hr>
- <div class="col-sm-10">
+ <div class="well well-sm">
    <h4><span class="glyphicon glyphicon-user"></span> <%= comment.user.name %> <small>Posted <%= time_ago_in_words(comment.created_at) %> ago</small></h4>
-   <p><%= comment.body %></p>
+   <p><%= comment.body %></p></span>
    <% if current_user == comment.user %>
       <%= link_to "Edit", edit_post_comment_path(comment.post, comment), :class => 'btn btn-light btn-sm' %>
       <%= link_to "Delete", [comment.post, comment],

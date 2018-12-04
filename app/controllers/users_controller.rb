@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   end
 
   def index
+    @users = User.all
   end
 
   def new
@@ -14,7 +15,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      #FLASH NOTICE THANKS FOR SIGNING UP #WHY NOT WORKING
+      flash[:success] = "Thanks for signing up!"
       #log_in @user this logs user in upon signup
       redirect_to login_path #directs user to log in
     else
@@ -29,7 +30,7 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update_attributes(user_params)
-      #FLASH NOTICE SUCCESSFUL PROFILE UPDATE
+      flash[:success] = "Profile successfully updated!"
       redirect_to @user
     else
       render 'edit'
@@ -42,7 +43,7 @@ class UsersController < ApplicationController
 
   def destroy
     current_user.destroy
-    #SUCCESS NOTICE ACCOUNT SUCCESSFULLY DELETED
+    flash[:success] = "Account deleted! :("
     redirect_to posts_path
   end
 

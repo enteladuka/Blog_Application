@@ -3,15 +3,15 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
 
 
-####Can remove this, just requires user to be logged in ####
-###DONT GET THIS ###
+####havent used this anywhere####
+
   private
 
   # Confirms a logged-in user.
   def logged_in_user
     unless logged_in?
       store_location
-      #INCLUDE A FLASH NOTICE SAYING USER NEEDS TO LOG IN
+      flash[:alert] = "Please log in"
       redirect_to login_url
     end
   end

@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :post_owner, only: [:destroy, :edit, :update]
-  
+
   def index
     @posts = Post.all
   end
@@ -27,11 +27,13 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if(@post.update(post_params))
+      flash[:notice] = "Post successfully updated"
       redirect_to @post
     else
       render 'edit'
     end
   end
+
   def show
     @post = Post.find(params[:id])
     @comments = Comment.where(post_id: @post).order("created_at DESC")
@@ -51,7 +53,7 @@ class PostsController < ApplicationController
 
     def post_owner
       unless current_user.id == @post.user_id
-        #INCLUDE A FLASH NOTICE THAT SAYS RESTRICTED ACCESS
+        flash[:error] = "Restricted Access!"
         redirect_to @post
       end
     end

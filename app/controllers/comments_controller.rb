@@ -9,6 +9,7 @@ before_action :comment_owner, only: [:destroy, :edit, :update]
     @comment.save
 
     if @comment.save
+      flash[:success] = "Comment created!"
       redirect_to post_path(@post)
     else
       render 'new'
@@ -19,6 +20,7 @@ before_action :comment_owner, only: [:destroy, :edit, :update]
   end
   def update
     if @comment.update(comment_params)
+      flash[:success] = "Comment successfully updated!"
       redirect_to post_path(@post)
     else
       render 'edit'
@@ -27,6 +29,7 @@ before_action :comment_owner, only: [:destroy, :edit, :update]
 
   def destroy
     @comment.destroy
+    flash[:success] = "Comment deleted!"
     redirect_to post_path(@post)
   end
 
@@ -46,7 +49,7 @@ before_action :comment_owner, only: [:destroy, :edit, :update]
 
   def comment_owner
     unless current_user.id == @comment.user_id
-      #INCLUDE A FLASH NOTICE THAT SAYS RESTRICTED ACCESS
+      flash[:error] = "Restricted Access!"
       redirect_to @post
     end
   end

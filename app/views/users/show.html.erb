@@ -19,7 +19,7 @@
 </head>
 <div class="container-fluid">
   <div class="col-sm-9">
-    <h3> My Profile </h3>
+    <h3> <%= @user.name %>'s Profile </h3>
     <hr>
     <%= @user.name %>, <%= @user.email %>
   </br>
@@ -27,9 +27,19 @@
   </br>
     <% if @user.posts.any? %>
       <h3>My Posts(<%= @user.posts.count %>)</h3>
-      <ol class="posts">
-      <!-- SOMETHING THAT DISPLAYS THE USERS POSTS -->
-      </ol>
+      <hr>
+        <% @user.posts.each do |post| %>
+            <div class="well well-sm"
+            <h3><small><%= post.title.upcase %></small></h3>
+            <h5><span class="glyphicon glyphicon-time"></span>
+            <%= post.user.name %>
+            <%=  post.created_at.to_s(:short) %>
+            </h5>
+            <p><%= post.body %></p>
+            <%= link_to "Read More", post_path(post), :class => 'btn btn-info btn-sm' %>
+          </div>
+            <hr>
+        <% end %>
       <% end %>
 </div>
 </div>

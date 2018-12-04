@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       remember user
       redirect_to posts_path
     else
-      #SHOW SOME SORT OF ALERT SAYING WRONG USERNAME/PASSWORD COMB
+      flash[:error] = "Incorrect email/password combination"
       render 'new'
     end
   end

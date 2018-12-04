@@ -1,30 +1,12 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <style>
 
-    /* Set black background color, white text and some padding */
-    footer {
-      background-color: #555;
-      color: white;
-      padding: 15px;
-    }
-
-  </style>
-</head> -->
 <div class="container-fluid">
   <div class="col-sm-9">
+    <i class="far fa-clock"></i>
     <h3><%= @post.title.upcase %></h3>
-    <h5><span class="glyphicon glyphicon-time"></span> Post by <%= @post.user.name %>, Posted <%= time_ago_in_words(@post.created_at) %> ago</h5>
+    <h5> <i class="fa fa-clock-o"></i> Post by <%= @post.user.name %>, Posted <%= time_ago_in_words(@post.created_at) %> ago</h5>
     <hr>
     <p><%= @post.body %></p>
 
-    <br>
     <% if logged_in? %>
     <%= link_to "Edit", edit_post_path(@post), :class => 'btn btn-light btn-sm' %>
     <%= link_to "Delete", post_path(@post),
@@ -42,18 +24,18 @@
       <%= f.text_field(:body, {:class => 'form-control', :placeholder => 'Comment'}) %>
     </p>
     <p>
-      <%= f.submit({:class => 'btn btn-success'}) %>
+      <%= f.submit({:class => 'btn btn-success btn-sm'}) %>
     </p>
   <% end %>
 <% end %>
 <br><br>
 
-<p><span class="badge"><%= pluralize( @post.comments.count, 'Comment' )%>:</span> </p>
+<p><span class="badge badge-info"><%= pluralize( @post.comments.count, 'Comment' )%>:</span> </p>
 
 <% @comments.each do |comment| %>
 <hr>
- <div class="well well-sm">
-   <h4><span class="glyphicon glyphicon-user"></span> <%= comment.user.name %> <small>Posted <%= time_ago_in_words(comment.created_at) %> ago</small></h4>
+ <div class="alert alert-light">
+   <h4><i class="fa fa-meh-o"></i> <%= comment.user.name %> <small>Posted <%= time_ago_in_words(comment.created_at) %> ago</small></h4>
    <p><%= comment.body %></p></span>
    <% if current_user == comment.user %>
       <%= link_to "Edit", edit_post_comment_path(comment.post, comment), :class => 'btn btn-light btn-sm' %>

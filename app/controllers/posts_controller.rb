@@ -13,7 +13,7 @@ class PostsController < ApplicationController
     #render plain: params[:post].inspect
     @post = current_user.posts.build(post_params)
     if @post.save
-      flash[:notice] = "Post successfully created"
+      flash[:success] = "Post successfully created"
       redirect_to @post
     else
       render 'new'
@@ -27,7 +27,7 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if(@post.update(post_params))
-      flash[:notice] = "Post successfully updated"
+      flash[:success] = "Post successfully updated"
       redirect_to @post
     else
       render 'edit'
@@ -53,7 +53,7 @@ class PostsController < ApplicationController
 
     def post_owner
       unless current_user.id == @post.user_id
-        flash[:error] = "Restricted Access!"
+        flash[:danger] = "Restricted Access!"
         redirect_to @post
       end
     end

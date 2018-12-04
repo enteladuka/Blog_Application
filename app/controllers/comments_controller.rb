@@ -49,7 +49,7 @@ before_action :comment_owner, only: [:destroy, :edit, :update]
 
   def comment_owner
     unless current_user.id == @comment.user_id
-      flash[:error] = "Restricted Access!"
+      flash[:danger] = "Restricted Access!"
       redirect_to @post
     end
   end

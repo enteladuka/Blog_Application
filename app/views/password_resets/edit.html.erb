@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+
+  </style>
+</head>
+
+<div class="container-fluid">
+  <div class="col-sm-9">
+    <h3> Password Reset <span class="glyphicon glyphicon-pencil"></span></h3>
+    <hr>
+    <%= form_for @user, url:password_reset_path(params[:id]) do |f| %>
+      <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <div class="alert alert-danger">
+            The form contains <%= pluralize(@user.errors.count, "error") %>.
+          </div>
+          <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="field">
+        <%= hidden_field_tag :email, @user.email %>
+      </div>
+      <div class="field">
+        <%= f.label :password %><br/>
+        <%= f.password_field(:password, {:class => 'form-control', :placeholder => 'Enter password'}) %>
+      </div>
+      <div class="field">
+        <%= f.label :password_confirmation %><br/>
+        <%= f.password_field(:password_confirmation, {:class => 'form-control', :placeholder => 'Enter password confirmation'}) %>
+      </div><br>
+      <div class="actions"><%= f.submit "Update Password", {:class => 'btn btn-primary'} %>
+
+      <br>
+      <hr>
+<% end %>
+  </div>
+</div>

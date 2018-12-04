@@ -3,7 +3,7 @@
   <div class="col-sm-9">
     <i class="far fa-clock"></i>
     <h3><%= @post.title.upcase %></h3>
-    <h5> <i class="fa fa-clock-o"></i> Post by <%= @post.user.name %>, Posted <%= time_ago_in_words(@post.created_at) %> ago</h5>
+    <h5> <i class="fa fa-clock-o"></i> Post by <%= link_to @post.user.name, user_path(@post.user_id) %>, Posted <%= time_ago_in_words(@post.created_at) %> ago</h5>
     <hr>
     <p><%= @post.body %></p>
 
@@ -35,7 +35,7 @@
 <% @comments.each do |comment| %>
 <hr>
  <div class="alert alert-light">
-   <h4><i class="fa fa-meh-o"></i> <%= comment.user.name %> <small>Posted <%= time_ago_in_words(comment.created_at) %> ago</small></h4>
+   <h4><i class="fa fa-meh-o"></i> <%= link_to comment.user.name, user_path(comment.user_id) %> <small>Posted <%= time_ago_in_words(comment.created_at) %> ago</small></h4>
    <p><%= comment.body %></p></span>
    <% if current_user == comment.user %>
       <%= link_to "Edit", edit_post_comment_path(comment.post, comment), :class => 'btn btn-light btn-sm' %>

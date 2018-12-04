@@ -8,7 +8,7 @@
   </br>
   </br>
     <% if @user.posts.any? %>
-      <h3>My Posts(<%= @user.posts.count %>)</h3>
+      <h3>Recent Posts (<%= @user.posts.count %>)</h3>
       <hr>
         <% @user.posts.each do |post| %>
             <div class="well well-sm"

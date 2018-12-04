@@ -7,7 +7,7 @@
         <div class="well well-sm"
         <h3><small><%= post.title.upcase %></small></h3>
         <h5><i class="fa fa-clock-o"></i>
-        <%=  post.user.name  %>
+        <%=  link_to post.user.name, user_path(post.user_id)  %>
         <%=  post.created_at.to_s(:short) %>
         </h5>
         <p><%= post.body %></p>

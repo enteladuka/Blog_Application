@@ -37,10 +37,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def show
-    @user = current_user
-  end
-
   def destroy
     current_user.destroy
     flash[:success] = "Account deleted! :("
